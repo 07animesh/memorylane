@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Lane 💖</title>
+  <!-- Load static tag -->
+  {% load static %}
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header>
+    <h1>Memory Lane 💖</h1>
+  </header>
+  
+  <!-- Form to Add Memory -->
+  <section class="add-memory">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="file" name="photo" accept="image/*" required>
+      <input type="text" name="caption" placeholder="Add a caption..." required>
+      <input type="date" name="date" required>
+      <button type="submit">Add Memory</button>
+    </form>
+  </section>
+
+  <!-- Memory Gallery -->
+  <section class="gallery">
+    <h2>Your Memories</h2>
+    <h2>(made with love by ani)</h2>
+    <div class="memory-grid">
+      <!-- Dynamically Load Memories Here -->
+      {% for memory in memories %}
+        <div class="memory-card">
+          <!-- Display Image -->
+          <img src="{{ memory.image.url }}" alt="Memory">
+          <p>{{ memory.caption }}</p>
+          <p class="date">{{ memory.date }}</p>
+
+          <!-- Delete Button -->
+          <form method="POST" action="{% url 'delete_memory' memory.id %}">
+            {% csrf_token %}
+            <button type="submit">Delete Memory</button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Falling Hearts Animation -->
+  <div class="hearts"></div>
+
+  <!-- Link JavaScript -->
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
