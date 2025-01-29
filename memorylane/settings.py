@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'memories',  # Add this line
-     'whitenoise.runserver_nostatic',
+    'memories',  # Add this line
+    'whitenoise.runserver_nostatic',
     'cloudinary',
     'cloudinary_storage',
 ]
@@ -158,17 +158,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
+import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
+# Static & Media Files
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Cloudinary Configuration
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'diuro7tfo',
-    'API_KEY': '633643246384276',
-    'API_SECRET': 'CSi9L2cWe5mI-02cUNO2mfBWRf8',
+    'CLOUD_NAME': 'diuro7tfo',  # Replace with your Cloudinary cloud name
+    'API_KEY': '633643246384276',  # Replace with your Cloudinary API key
+    'API_SECRET': 'CSi9L2cWe5mI-02cUNO2mfBWRf8',  # Replace with your Cloudinary API secret
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 
 MEDIA_URL = '/media/'  # This is optional, but keeps URLs consistent
