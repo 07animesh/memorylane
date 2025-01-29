@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
      'memories',  # Add this line
      'whitenoise.runserver_nostatic',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -153,3 +155,17 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Media files (uploads)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+import os
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'diuro7tfo',
+    'API_KEY': '633643246384276',
+    'API_SECRET': 'CSi9L2cWe5mI-02cUNO2mfBWRf8',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+MEDIA_URL = '/media/'  # This is optional, but keeps URLs consistent
