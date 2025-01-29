@@ -158,7 +158,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
-import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': 'diuro7tfo',
@@ -167,5 +169,6 @@ CLOUDINARY_STORAGE = {
 }
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 MEDIA_URL = '/media/'  # This is optional, but keeps URLs consistent
